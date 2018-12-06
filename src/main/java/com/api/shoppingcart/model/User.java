@@ -13,12 +13,12 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
-    private Long userId;
+    private Long userid;
 
     private String uname;
 
     public User(Long userId, String uname) {
-        this.userId = userId;
+        this.userid = userId;
         this.uname = uname;
     }
 
@@ -26,11 +26,11 @@ public class User {
     }
 
     public Long getId() {
-        return this.userId;
+        return this.userid;
     }
 
     public void setId(Long id) {
-        this.userId = id;
+        this.userid = id;
     }
 
     public String getUname() {

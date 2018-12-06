@@ -13,7 +13,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
-    private Long poductId;
+    private Long poductid;
     private String Pname;
     private Double price;
 
@@ -21,17 +21,17 @@ public class Product {
     }
 
     public Product(Long id, String Pname, Double price) {
-        this.poductId = id;
+        this.poductid = id;
         this.Pname = Pname;
         this.price = price;
     }
 
     public Long getId() {
-        return this.poductId;
+        return this.poductid;
     }
 
     public void setId(Long id) {
-        this.poductId = id;
+        this.poductid = id;
     }
 
     public String getPname() {

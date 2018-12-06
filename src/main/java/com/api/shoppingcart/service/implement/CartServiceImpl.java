@@ -24,7 +24,7 @@ public class CartServiceImpl implements CartService {
 	}
 
 	public List<Cart> getCart(Long userId) {
-		if (repo.existsByUserId(userId) != null)
+		if (repo.existsByUserId(userId) )
 			return repo.findAllByUserId(userId);
 		else
 			return null;
@@ -43,7 +43,7 @@ public class CartServiceImpl implements CartService {
 	}
 
 	public boolean exists(Long id) {
-		return repo.existsByUserId(id) != null;
+		return repo.existsByUserId(id);
 	}
 
 	@Override
@@ -51,10 +51,4 @@ public class CartServiceImpl implements CartService {
 		CartId id = new CartId(prodId, userId);
 		repo.deleteById(id);
 	}
-
-	/*
-	 * public Cart addProduct(long cartId, Node product);
-	 * 
-	 * public Cart removeProduct(long cartId, Node product);
-	 */
 }
