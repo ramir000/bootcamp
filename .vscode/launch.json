@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Api<shoppingcart>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.api.shoppingcart.Api",
+            "projectName": "shoppingcart",
+            "args": ""
+        }
+    ]
+}

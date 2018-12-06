@@ -2,19 +2,19 @@ package com.api.shoppingcart.service;
 
 import java.util.List;
 
-import com.api.shoppingcart.dto.ProductDto;
+import com.api.shoppingcart.model.Product;
 
 public interface ProductService {
 
-	public ProductDto addProduct(ProductDto product);
+	public Product addProduct(Product product);
 
-	public ProductDto getProduct(long id);
+	public Product getProduct(long id);
 
-	public ProductDto updateProduct(ProductDto product);
+	public Product updateProduct(Product product);
  
 	public void removeProduct(long id);
 
-	public List<ProductDto> getAll();
+	public List<Product> getAll();
 
 	public boolean exists(Long id);
 }

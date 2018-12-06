@@ -5,7 +5,6 @@ import java.util.List;
 import com.api.shoppingcart.dao.UserDao;
 import com.api.shoppingcart.dto.UserDto;
 import com.api.shoppingcart.model.User;
-import com.api.shoppingcart.service.ConverterService;
 import com.api.shoppingcart.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +12,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
-	@Autowired
-	private ConverterService converterService;
 	@Autowired
 	private UserDao repo;
 
@@ -27,9 +24,10 @@ public class UserServiceImpl implements UserService {
 	};
 
 	public void removeUser(long id) {
+		repo.deleteById(id);
 	}
 
-	public List<UserDto> getAll() {
+	public List<User> getAll() {
 		return null;
 	}
 

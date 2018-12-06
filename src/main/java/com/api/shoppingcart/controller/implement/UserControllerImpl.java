@@ -1,6 +1,5 @@
 package com.api.shoppingcart.controller.implement;
 
-
 import com.api.shoppingcart.controller.UserController;
 import com.api.shoppingcart.dto.UserDto;
 import com.api.shoppingcart.model.User;
@@ -27,13 +26,13 @@ public class UserControllerImpl implements UserController {
     @PostMapping("/")
     public UserDto addUser(@RequestBody UserDto user) {
         User user2 = modelMapper.map(user, User.class);
-        return serv.addUser(user2);
+        return modelMapper.map(serv.addUser(user2), UserDto.class);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> getUser(@PathVariable Long id) {
         if (serv.exists(id))
-            return ResponseEntity.ok(serv.getUser(id));
+            return ResponseEntity.ok(modelMapper.map(serv.getUser(id), UserDto.class));
         return ResponseEntity.notFound().build();
     }
 }

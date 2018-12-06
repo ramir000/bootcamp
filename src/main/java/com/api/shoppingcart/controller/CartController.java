@@ -1,5 +1,7 @@
 package com.api.shoppingcart.controller;
 
+import java.util.List;
+
 import com.api.shoppingcart.controller.CartController;
 import com.api.shoppingcart.dto.CartDto;
 import com.api.shoppingcart.dto.NodeDto;
@@ -43,7 +45,7 @@ public interface CartController {
                         @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
                         @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
                         @ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
-        public ResponseEntity<NodeDto> updateItem(Long id, Long prodID, int quantity);
+        public ResponseEntity<List<NodeDto>> updateItem(Long id, Long prodID, int quantity);
 
         @ApiOperation(value = "Delete a Product in the Cart")
         @ApiResponses(value = { @ApiResponse(code = 200, message = "Product successfully Deleted"),
@@ -51,5 +53,6 @@ public interface CartController {
                         @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
                         @ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
         public void deleteItem(Long id, Long prodID);
+        
 
 }
