@@ -2,8 +2,9 @@ package com.api.shoppingcart.service.implement;
 
 import java.util.List;
 
-import com.api.shoppingcartdao.UserDao;
+import com.api.shoppingcart.dao.UserDao;
 import com.api.shoppingcart.dto.UserDto;
+import com.api.shoppingcart.model.User;
 import com.api.shoppingcart.service.ConverterService;
 import com.api.shoppingcart.service.UserService;
 
@@ -17,12 +18,12 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao repo;
 
-	public UserDto addUser(UserDto user) {
-		return converterService.convert(repo.save(converterService.convert(user)));
+	public User addUser(User user) {
+		return repo.save(user);
 	};
 
-	public UserDto getUser(long id) {
-		return converterService.convert(repo.getOne(id));
+	public User getUser(long id) {
+		return repo.getOne(id);
 	};
 
 	public void removeUser(long id) {
