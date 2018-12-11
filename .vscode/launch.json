@@ -6,7 +6,7 @@
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",
-            "mainClass": "com.api.shoppingcart.Api",
+            "mainClass": "com.globant.bootcamp.Api",
             "projectName": "shoppingcart",
             "args": ""
         }
