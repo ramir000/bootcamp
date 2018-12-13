@@ -2,7 +2,7 @@ package com.globant.bootcamp.controller.advice;
 
 import java.util.Optional;
 
-import com.globant.bootcamp.dao.exception.UserNotFoundException;
+import com.globant.bootcamp.dao.exception.ProductNotFoundException;
 
 import org.springframework.hateoas.VndErrors;
 import org.springframework.http.HttpStatus;
@@ -12,10 +12,10 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 @ControllerAdvice
 @RequestMapping(produces = "application/vnd.error+json")
-public class UserControllerAdvice extends ResponseEntityExceptionHandler {
+public class ProductControllerAdvice extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<VndErrors> notFoundException(final UserNotFoundException e) {
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<VndErrors> notFoundException(final ProductNotFoundException e) {
         return error(e, HttpStatus.NOT_FOUND, e.getId().toString());
     }
 

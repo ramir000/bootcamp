@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.globant.bootcamp.controller.ProductController;
+import com.globant.bootcamp.dao.exception.ProductNotFoundException;
 import com.globant.bootcamp.dto.ProductDto;
 import com.globant.bootcamp.model.Product;
 import com.globant.bootcamp.dto.Mapper;
@@ -30,9 +31,11 @@ public class ProductControllerImpl implements ProductController {
 
     @GetMapping(value = "/api/v1/product/{id}", produces = { "application/json" })
     public ResponseEntity<ProductDto> getproductByIndex(@PathVariable Long id) {
-        if (serv.exists(id))
+        try {
             return ResponseEntity.ok(modelMapper.map(serv.getProduct(id), ProductDto.class));
-        return ResponseEntity.notFound().build();
+        } catch (RuntimeException ex) {
+            throw new ProductNotFoundException(id);
+        }
     }
 
     @PostMapping("/api/v1/product")
@@ -50,7 +53,12 @@ public class ProductControllerImpl implements ProductController {
     }
 
     @DeleteMapping("/api/v1/product/{id}")
-    public void deleteProduct(@PathVariable long id) {
-        serv.removeProduct(id);
+    public ResponseEntity<?> deleteProduct(@PathVariable long id) {
+        try {
+            serv.removeProduct(id);
+            return ResponseEntity.noContent().build();
+        } catch (RuntimeException ex) {
+            throw new ProductNotFoundException(id);
+        }
     }
 }

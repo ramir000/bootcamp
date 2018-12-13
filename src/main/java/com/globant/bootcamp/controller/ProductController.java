@@ -32,7 +32,7 @@ public interface ProductController {
         public ProductDto addProduct(ProductDto product);
 
         @ApiOperation(value = "Change one product")
-        @ApiResponses(value = { @ApiResponse(code = 200, message = "Product successfully deleted"),
+        @ApiResponses(value = { @ApiResponse(code = 200, message = "Product successfully updated"),
                         @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
                         @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
                         @ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
@@ -40,11 +40,11 @@ public interface ProductController {
         public ResponseEntity<ProductDto> updateProduct(Long id, ProductDto product);
 
         @ApiOperation(value = "Delete a product")
-        @ApiResponses(value = { @ApiResponse(code = 200, message = "Product successfully inserted"),
+        @ApiResponses(value = { @ApiResponse(code = 200, message = "Product successfully deleted"),
                         @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
                         @ApiResponse(code = 403, message = "Accessing the resource you were trying to reach is forbidden"),
                         @ApiResponse(code = 404, message = "The resource you were trying to reach is not found") })
 
-        public void deleteProduct(long id);
+        public ResponseEntity<?> deleteProduct(long id);
 
 }

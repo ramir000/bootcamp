@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public List<User> getAll() {
-		return null;
+		return repo.findAll();
 	}
 
 	@Override
