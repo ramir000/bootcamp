@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.globant.bootcamp.dao.exception.UserNullPointerException;
 import com.globant.bootcamp.model.Cart;
 import com.globant.bootcamp.model.Node;
 import com.globant.bootcamp.model.Product;
@@ -30,7 +31,7 @@ public class Mapper {
 
     public static Cart convert(CartDto cart) {
         if (cart.getUser() == null)
-            throw new RuntimeException("USER CAN'T BE NULL");
+            throw new UserNullPointerException();
         Cart c = new Cart(new Long(cart.getId()), null, convert(cart.getUser()));
         List<Node> n = new LinkedList<>();
         n = cart.getItems().stream().map(p -> convert(p, c)).collect(Collectors.toList());
