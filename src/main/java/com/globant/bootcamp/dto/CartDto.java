@@ -4,37 +4,15 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
+@Data
+@AllArgsConstructor
 public class CartDto {
     private int id;
     private UserDto user;
     private List<NodeDto> items;
-
-    public CartDto() {
-    }
-
-    public CartDto(int id, UserDto user, List<NodeDto> items) {
-        this.id = id;
-        this.user = user;
-        this.items = items;
-    }
-
-    public UserDto getUser() {
-        return this.user;
-    }
-
-    public void setUser(UserDto user) {
-        this.user = user;
-    }
-
-    public List<NodeDto> getItems() {
-        return this.items;
-    }
-
-    public void setItems(List<NodeDto> items) {
-        this.items = items;
-    }
 
     public void addItem(NodeDto node) {
         this.items.add(node);
@@ -42,10 +20,6 @@ public class CartDto {
 
     public void removeItem(NodeDto node) {
         this.items.remove(node);
-    }
-
-    public void removeAll() {
-        this.items.removeAll(this.items);
     }
 
     @JsonIgnore
@@ -56,12 +30,5 @@ public class CartDto {
         return total;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
 }
