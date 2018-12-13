@@ -28,7 +28,7 @@ public class CartControllerImpl implements CartController {
                 return Mapper.convert(servCart.addCart(Mapper.convert(cart)));
         }
 
-        @DeleteMapping(value = "/cart", produces = { "application/json" })
+        @DeleteMapping(value = "/api/v1/cart", produces = { "application/json" })
         public void deleteCart(@RequestBody Long id) {
                 servCart.removeCart(id);
         }

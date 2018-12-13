@@ -1,5 +1,7 @@
 package com.globant.bootcamp.service.implement;
 
+import java.util.List;
+
 import com.globant.bootcamp.dao.CartDao;
 import com.globant.bootcamp.model.Cart;
 import com.globant.bootcamp.model.Node;
@@ -15,12 +17,24 @@ public class CartServiceImpl implements CartService {
 	private CartDao repo;
 	@Autowired
 	private NodeServiceImpl servNode;
+	@Autowired
+	private ProductServiceImpl servProduct;
 
 	public Cart addCart(Cart cart) {
-		Cart c = repo.save(cart);
-		for (Node n : c.getItems())
-			servNode.add(n);
-		return c;
+	
+		if (cart.getItems() != null) {
+			List<Node> items = cart.getItems();
+			for (Node item : items) {
+				if (item.getnodeId() != null) {
+					if (!servNode.exists(item.getnodeId())) {
+						if (!servProduct.exists(item.getProduct().getId()))
+							throw new RuntimeException("PRODUCT NOT FOUND");
+					}
+				}
+				servNode.add(item);
+			}
+		}
+		return repo.save(cart);
 	}
 
 	public Cart getCart(Long cartid) {

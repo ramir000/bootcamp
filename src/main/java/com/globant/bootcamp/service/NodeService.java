@@ -9,4 +9,5 @@ public interface NodeService {
 
     public void remove(Node node);
 
+    public boolean exists(Long id);
 }

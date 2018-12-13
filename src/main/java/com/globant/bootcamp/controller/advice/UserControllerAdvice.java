@@ -2,7 +2,6 @@ package com.globant.bootcamp.controller.advice;
 
 import java.util.Optional;
 
-import javax.el.PropertyNotFoundException;
 
 import com.globant.bootcamp.dao.exception.UserNotFoundException;
 
@@ -17,9 +16,9 @@ import java.util.Optional;
 @ControllerAdvice
 @RequestMapping(produces = "application/vnd.error+json")
 public class UserControllerAdvice extends ResponseEntityExceptionHandler {
-
+    
     @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<VndErrors> notFoundException(final UserNotFoundException e) {
+    public ResponseEntity<VndErrors> userNotFoundException(final UserNotFoundException e) {
         return error(e, HttpStatus.NOT_FOUND, e.getId().toString());
     }
 

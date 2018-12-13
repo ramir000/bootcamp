@@ -28,4 +28,9 @@ public class NodeServiceImpl implements NodeService {
         repo.delete(node);
     }
 
+    @Override
+    public boolean exists(Long id) {
+        return repo.existsById(id);
+    }
+
 }

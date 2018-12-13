@@ -32,6 +32,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean exists(Long id) {
-		return false;
+		return repo.existsById(id);
 	};
 }
